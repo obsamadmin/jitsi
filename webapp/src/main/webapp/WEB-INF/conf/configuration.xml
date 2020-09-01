@@ -28,6 +28,6 @@
     <type>org.exoplatform.jitsi.JitsiMeetService</type>
   </component>
   
-  <import>war:/conf/jitsi-meet/portal/portal-configuration.xml</import>
+  <import>war:/conf/jitsi/portal/portal-configuration.xml</import>
 
 </configuration>

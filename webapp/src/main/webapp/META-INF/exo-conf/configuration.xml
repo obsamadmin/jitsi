@@ -42,7 +42,7 @@
             <field name="dependencies">
               <collection type="java.util.ArrayList">
                 <value>
-                  <string>jitsi-meet</string>
+                  <string>jitsi</string>
                 </value>
               </collection>
             </field>

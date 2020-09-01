@@ -27,11 +27,11 @@
   <priority>1</priority>
   <page-nodes>
     <node>
-      <uri>jitsi-meet</uri>
-      <name>jitsi-meet</name>
+      <uri>jitsi</uri>
+      <name>jitsi</name>
       <label xml:lang="en">Jitsi Meet</label>
       <visibility>SYSTEM</visibility>
-      <page-reference>portal::global::jitsi-meet</page-reference>
+      <page-reference>portal::global::jitsi</page-reference>
     </node>
   </page-nodes>
 </node-navigation>

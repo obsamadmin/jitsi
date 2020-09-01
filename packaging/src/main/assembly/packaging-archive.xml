@@ -11,7 +11,7 @@
        <includes>
          <include>org.exoplatform.addons.jitsi:exo-jitsi-webapp:war</include>
        </includes>
-       <outputFileNameMapping>jitsi-meet.war</outputFileNameMapping>
+       <outputFileNameMapping>jitsi.war</outputFileNameMapping>
        <scope>provided</scope>
        <fileMode>0644</fileMode>
      </dependencySet>

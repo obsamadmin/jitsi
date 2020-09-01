@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_2 http://www.gatein.org/xml/ns/gatein_objects_1_2"
   xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_2">
   <page>
-    <name>jitsi-meet</name>
+    <name>jitsi</name>
     <title>Jitsi Meet Page</title>
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>manager:/platform/administrators</edit-permission>
@@ -12,7 +12,7 @@
       <access-permissions>*:/platform/users</access-permissions>
       <portlet-application>
         <portlet>
-          <application-ref>jitsi-meet</application-ref>
+          <application-ref>jitsi</application-ref>
           <portlet-ref>JitsiMeetPortlet</portlet-ref>
         </portlet>
         <title>Jitsi Meet Page</title>
