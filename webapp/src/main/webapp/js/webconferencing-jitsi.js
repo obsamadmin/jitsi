@@ -114,9 +114,9 @@
       var getCallId = function(context, target) {
         var callId;
         if (context.isGroup) {
-          if (context.isSpaceEvent) {
+          if (context.isSpaceEvent && context.spaceId) {
             // Space events
-            callId = "g_" + context.owner + "-" + uuid.uuidv4().replaceAll("-", "");
+            callId = "g_" + context.spaceId + "-" + uuid.uuidv4().replaceAll("-", "");
           } else {
             // We support spaces and chat rooms in group calls
             callId = "g_" + (context.isSpace ? context.spaceId : context.roomName);
