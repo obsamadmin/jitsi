@@ -3,7 +3,7 @@
  * provider to Web Conferencing module and then handle calls for portal
  * user/groups.
  */
-(function($, webConferencing, callButton) {
+(function($, webConferencing, callButton, uuid) {
   "use strict";
   var globalWebConferencing = typeof eXo != "undefined" && eXo && eXo.webConferencing ? eXo.webConferencing : null;
   // Use webConferencing from global eXo namespace (for non AMD uses).
@@ -114,8 +114,13 @@
       var getCallId = function(context, target) {
         var callId;
         if (context.isGroup) {
-          // We support spaces and chat rooms in group calls
-          callId = "g_" + (context.isSpace ? context.spaceId : context.roomName);
+          if (context.isSpaceEvent) {
+            // Space events
+            callId = "g_" + context.owner + "-" + uuid.uuidv4().replaceAll("-", "");
+          } else {
+            // We support spaces and chat rooms in group calls
+            callId = "g_" + (context.isSpace ? context.spaceId : context.roomName);
+          }
         } else {
           // Sort call members to have always the same ID for two
           // parts independently on who started the call
@@ -673,4 +678,4 @@
       window.console
         .log("WARN: webConferencing not given and eXo.webConferencing not defined. Jitsi provider registration skipped.");
   }
-})($, webConferencing, callButton);
+})($, webConferencing, callButton, uuid);
