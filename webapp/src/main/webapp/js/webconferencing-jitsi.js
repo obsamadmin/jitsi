@@ -115,7 +115,7 @@
           callId = "g_" + context.spaceId + "-" + uuidv4().replaceAll("-", "");
         } else {
           // We support spaces and chat rooms in group calls
-          callId = "g_" + (context.isSpace ? context.spaceId : context.roomName);
+          callId = "g_" + (context.isSpace ? context.spaceId : context.roomId);
         }
         // Transliterate callId
         return window.slugify(callId);
