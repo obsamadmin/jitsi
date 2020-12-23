@@ -121,10 +121,10 @@
         return window.slugify(callId);
       };
 
-      var userCallId = function(currentUser, targetUser) {
+      var userCallId = function(context, target) {
         // Sort call members to have always the same ID for two
         // parts independently on who started the call
-        var callMembersAsc = getCallMembers(currentUser, targetUser).map(function(member) {
+        var callMembersAsc = getCallMembers(context.currentUser, target).map(function(member) {
           return member.id;
         }).slice();
         callMembersAsc.sort();
