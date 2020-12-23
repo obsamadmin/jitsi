@@ -121,10 +121,10 @@
         return window.slugify(callId);
       };
 
-      var userCallId = function(context, target) {
+      var userCallId = function(currentUser, targetUser) {
         // Sort call members to have always the same ID for two
         // parts independently on who started the call
-        var callMembersAsc = getCallMembers(context.currentUser, target).map(function(member) {
+        var callMembersAsc = getCallMembers(currentUser, targetUser).map(function(member) {
           return member.id;
         }).slice();
         callMembersAsc.sort();
@@ -139,7 +139,7 @@
         if (context.isGroup) {
           return groupCallId(context);
         } else {
-          return userCallId(context, target);
+          return userCallId(context.currentUser, target);
         }
       };
 
@@ -155,7 +155,7 @@
           // 1-1 call ID (it requires fetching target details)
           if (context && context.details) {
             context.details().then(target => {
-              process.resolve(userCallId(context, target));
+              process.resolve(userCallId(context.currentUser, target));
             }).catch(err => {
               process.reject(err);
             });
