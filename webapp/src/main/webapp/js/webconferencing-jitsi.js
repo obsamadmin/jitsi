@@ -115,7 +115,8 @@
           callId = "g_" + context.spaceId + "-" + uuidv4().replaceAll("-", "");
         } else {
           // We support spaces and chat rooms in group calls
-          callId = "g_" + (context.isSpace ? context.spaceId : context.roomId);
+          // TODO use roomId for chat room - they are unique
+          callId = "g_" + (context.isSpace ? context.spaceId : context.roomName);
         }
         // Transliterate callId
         return window.slugify(callId);
