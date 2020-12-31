@@ -13,15 +13,15 @@
   </UIEditUserProfileForm>
   <UICallButton>
     <label>
-      <jitsi>مكالمة</jitsi>
-      <join>الانضمام</join>
-      <joined>مباشر</joined>
+      <jitsi>Call</jitsi>
+      <join>Join</join>
+      <joined>On air</joined>
     </label>
   </UICallButton>
   <UICallPopup>
     <label>
-      <join>الانضمام</join>
-      <ignore>تجاهل</ignore>
+      <join>Join</join>
+      <ignore>Ignore</ignore>
     </label>
   </UICallPopup>
   <!-- Messages for Platform add-on -->
