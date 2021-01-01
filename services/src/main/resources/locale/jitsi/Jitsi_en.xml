@@ -4,7 +4,7 @@
     <label>
       <jitsi>Call</jitsi>
       <join>Join</join>
-      <joined>Joined</joined>
+      <joined>On air</joined>
     </label>
   </UICallButton>
   <UICallPopup>

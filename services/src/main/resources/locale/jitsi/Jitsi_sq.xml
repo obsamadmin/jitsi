@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bundle>
-  <!-- Messages for Platform menu and view settings -->
-  <UIBasicProfile>
-    <label>
-      <jitsi>crwdns6966928:0crwdne6966928:0</jitsi>
-    </label>
-  </UIBasicProfile>
-  <UIEditUserProfileForm>
-    <label>
-      <jitsi>crwdns6966930:0crwdne6966930:0</jitsi>
-    </label>
-  </UIEditUserProfileForm>
   <UICallButton>
     <label>
       <jitsi>crwdns6966932:0crwdne6966932:0</jitsi>
@@ -24,5 +13,4 @@
       <ignore>crwdns6966984:0crwdne6966984:0</ignore>
     </label>
   </UICallPopup>
-  <!-- Messages for Platform add-on -->
 </bundle>
