@@ -254,6 +254,7 @@
           const lastAccess = new Date(call.lastDate).getTime();
           if (now - lastAccess > GUEST_EXPIRATION_MS
               && call.participants.filter(p => p.state === "joined" && p.type !== GUEST_TYPE).length === 0
+
               && call.participants.filter(p => p.state !== "leaved" && p.type === GUEST_TYPE).length > 0) {
             log.debug("Call assumed as expired for guests: " + callId + ", now: " + now + ", date: " + JSON.stringify(call.lastDate));
             webConferencing.updateCall(callId, "stopped").then(call => {
@@ -389,7 +390,7 @@
             callProcess.reject("The Call App is not active");
           }
         }).catch(err => {
-          callProcess.reject("The Call App is temporary unavailable: " + webConferencing.errorText(err));
+          callProcess.reject("The Call App is temporary unavailable (" + webConferencing.errorText(err) + ")");
         });
 
         // We wait for call readiness and invoke start it in the
