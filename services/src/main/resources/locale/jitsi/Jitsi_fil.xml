@@ -11,6 +11,8 @@
     <label>
       <join>Ang sumali</join>
       <ignore>Ang Balewalain</ignore>
+      <meetingWithYou>started a Meeting with you</meetingWithYou>
+      <meetingInTheRoom>A meeting has started in the room</meetingInTheRoom>
     </label>
   </UICallPopup>
 </bundle>

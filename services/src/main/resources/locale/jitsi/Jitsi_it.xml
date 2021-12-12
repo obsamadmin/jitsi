@@ -11,6 +11,8 @@
     <label>
       <join>Ragiungere</join>
       <ignore>Ignorare</ignore>
+      <meetingWithYou>started a Meeting with you</meetingWithYou>
+      <meetingInTheRoom>A meeting has started in the room</meetingInTheRoom>
     </label>
   </UICallPopup>
 </bundle>

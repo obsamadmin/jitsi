@@ -11,6 +11,8 @@
     <label>
       <join>crwdns6966982:0crwdne6966982:0</join>
       <ignore>crwdns6966984:0crwdne6966984:0</ignore>
+      <meetingWithYou>crwdns7015595:0crwdne7015595:0</meetingWithYou>
+      <meetingInTheRoom>crwdns7015597:0crwdne7015597:0</meetingInTheRoom>
     </label>
   </UICallPopup>
 </bundle>

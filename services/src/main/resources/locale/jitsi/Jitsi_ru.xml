@@ -11,6 +11,8 @@
     <label>
       <join>Присоединиться</join>
       <ignore>Игнорировать</ignore>
+      <meetingWithYou>started a Meeting with you</meetingWithYou>
+      <meetingInTheRoom>A meeting has started in the room</meetingInTheRoom>
     </label>
   </UICallPopup>
 </bundle>
