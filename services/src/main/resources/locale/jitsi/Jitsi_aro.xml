@@ -11,8 +11,8 @@
     <label>
       <join>الانضمام</join>
       <ignore>تجاهل</ignore>
-      <meetingWithYou>started a Meeting with you</meetingWithYou>
-      <meetingInTheRoom>A meeting has started in the room</meetingInTheRoom>
+      <meetingWithYou>بدأ اجتماعاً معك</meetingWithYou>
+      <meetingInTheRoom>وقد بدأ اجتماع في القاعة</meetingInTheRoom>
     </label>
   </UICallPopup>
 </bundle>
