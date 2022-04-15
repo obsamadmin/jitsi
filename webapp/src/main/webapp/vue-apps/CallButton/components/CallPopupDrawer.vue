@@ -8,10 +8,6 @@
         right
         style="width: 475px;">
         <template slot="content">
-          <div>Hello1</div>
-          <div>Hello2</div>
-          <div>Hello3</div>
-          <!-- <ul class="call-popup"> -->
           <call-popup
             :isdialogvisible="isDialogVisible"
             :caller="caller"
@@ -20,7 +16,6 @@
             :playringtone="playRingtone"
             :state="state"
             :i18n="i18n" />
-          <!-- </ul> -->
         </template>
       </exo-drawer>
     </v-app>
@@ -68,15 +63,8 @@ export default {
     return {
     };
   },
-  //   created() {
-  //   },
   mounted() {
     this.$refs.callPopupDrawer.open();
   },
-  methods: {
-    // openDrawer() {
-    //   this.$refs.callPopupDrawer.open();
-    // }
-  }
 };
 </script>

@@ -1,5 +1,7 @@
 const path = require("path");
-const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 let config = {
   context: path.resolve(__dirname, "."),
@@ -10,43 +12,55 @@ let config = {
     callButton: "./src/main/webapp/vue-apps/CallButton/main.js",
   },
   output: {
+    publicPath: '',
     filename: "js/[name].bundle.js",
     libraryTarget: "amd",
   },
+  plugins: [
+    new ESLintPlugin({
+      files: [
+        './src/main/webapp/vue-apps/*.js',
+        './src/main/webapp/vue-apps/*.vue',
+        './src/main/webapp/vue-apps/**/*.js',
+        './src/main/webapp/vue-apps/**/*.vue',
+      ],
+    }),
+    new VueLoaderPlugin(),
+    // we use MiniCssExtractPlugin to extract the css code on a css file
+    new MiniCssExtractPlugin({
+      filename: 'css/main.css'
+    }),
+  ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"],
+        use: [
+          process.env.NODE_ENV !== 'production'
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ],
       },
       {
-        test: /\.less$/,
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: "vue-style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                sourceMap: true,
-              },
-            },
-            {
-              loader: "less-loader",
-              options: {
-                sourceMap: true,
-              },
-            },
-          ],
-        }),
+        test: /\.less$/i,
+        use: [
+          process.env.NODE_ENV !== 'production'
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
+          // compiles Less to CSS
+          "css-loader",
+          "less-loader",
+        ],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"],
+        use: ["babel-loader"],
       },
       {
         test: /\.vue$/,
-        use: ["vue-loader", "eslint-loader"],
+        use: ["vue-loader"],
       },
       {
         test: /\.svg$/,
@@ -61,10 +75,6 @@ let config = {
     vue: "Vue",
     vuetify: "Vuetify",
   },
-  plugins: [
-    // we use ExtractTextWebpackPlugin to extract the css code on a css file
-    new ExtractTextWebpackPlugin("css/main.css"),
-  ],
 };
 
 module.exports = config;

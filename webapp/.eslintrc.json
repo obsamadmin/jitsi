@@ -4,5 +4,10 @@
   ],
   "globals": {
     "webConferencing": true
+  },
+  "rules": {
+    "vue/multi-word-component-names": "off",
+    "vue/component-definition-name-casing": "off",
+    "vue/no-mutating-props": "warn"
   }
 }

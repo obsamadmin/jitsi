@@ -2,7 +2,7 @@
   <v-dialog 
     v-model="showJitsi"
     content-class="Jitsi">
-    <template v-slot:activator="{ on }">
+    <template #activator="{ on }">
       <a 
         data-placement="bottom" 
         rel="tooltip"  
