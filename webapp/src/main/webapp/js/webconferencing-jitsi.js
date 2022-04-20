@@ -173,7 +173,7 @@
        * Returns call URL (link).
        */
       var getCallUrl = function(callId) {
-        return window.location.protocol + "//" + window.location.host + CALL_URL_PATH + callId;
+        return "https://meet.jit.si/" + callId;
       };
       this.getCallUrl = getCallUrl;
 
