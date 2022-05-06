@@ -28,9 +28,9 @@
 
       const GUEST_TYPE = "guest";
       const GUEST_EXPIRATION_MS = 1000 * 60 * 4; // 4 hrs
-      
+
       const CALL_URL_PATH = "/jitsi/meet/";
-      
+
       var self = this;
       var settings;
 
@@ -38,7 +38,7 @@
        * Jitsi supports generating URLs for calls.
        */
       this.linkSupported = true;
-      
+
       /**
        * Jitsi supports group calls.
        */
@@ -73,7 +73,7 @@
           return settings.title;
         }
       };
-      
+
       /**
        * Request a status of Jitsi Call App
        */
@@ -173,7 +173,7 @@
        * Returns call URL (link).
        */
       var getCallUrl = function(callId) {
-        return "https://meet.jit.si/" + callId;
+        return "https://meet.sds.unb.br/" + callId;
       };
       this.getCallUrl = getCallUrl;
 
@@ -224,10 +224,10 @@
         // Window name should be without spaces according Mozilla!
         return self.getType() + "-" + callId;
       };
-      
+
       /**
-       * Read a call from the backend storage by an ID. 
-       * Additionally check to keep the backend with calls clean of phantom guests - 
+       * Read a call from the backend storage by an ID.
+       * Additionally check to keep the backend with calls clean of phantom guests -
        * those who was in the call in the past and stuck for unknown reasons and doesn't let the call to stop.
        */
       var getCall = function(callId, currentUserId) {
@@ -236,8 +236,8 @@
           // TODO check does call contain only guests and stop it (guests should be removed) if it's older of 3hrs
           const now = Date.now();
           const lastAccess = new Date(call.lastDate).getTime();
-          if (now - lastAccess > GUEST_EXPIRATION_MS 
-              && call.participants.filter(p => p.state === "joined" && p.type !== GUEST_TYPE).length === 0 
+          if (now - lastAccess > GUEST_EXPIRATION_MS
+              && call.participants.filter(p => p.state === "joined" && p.type !== GUEST_TYPE).length === 0
               && call.participants.filter(p => p.state !== "leaved" && p.type === GUEST_TYPE).length > 0) {
             log.debug("Call assumed as expired for guests: " + callId + ", now: " + now + ", date: " + JSON.stringify(call.lastDate));
             webConferencing.updateCall(callId, "stopped").then(call => {
@@ -256,7 +256,7 @@
         });
         return callProcess.promise();
       };
-      
+
       /**
        * Read the call state by given call ID and context
        */
@@ -295,7 +295,7 @@
       }
 
       /**
-       * Start a call in given context and its target details. 
+       * Start a call in given context and its target details.
        */
       var startCall = function(context, target) {
         const callProcess = $.Deferred();
@@ -303,17 +303,16 @@
         // Open the call window before async requests to avoid browser blocker, then we'll update it with a right URL
         const callWindow = webConferencing.showCallWindow("", callWindowName(callId));
         getCallAppStatus().then(res => {
-          if (res.status === "active") {
             getCall(callId, context.currentUser.id).then(call => {
               // We need wait for participants update (in case of a room)
               const process = $.Deferred();
               if (context.isRoom && (call.state === "stopped" || call.participants.length == 0)) {
                 // Chat room needs members sync to send notifications for call start
-                // If room call stopped or empty we update all parties in it to sync members 
+                // If room call stopped or empty we update all parties in it to sync members
                 const participants = Object.values(target.members).map(member => {
                   return member.id;
                 });
-                webConferencing.updateParticipants(callId, participants).then(call => process.resolve(call)).catch(err => { 
+                webConferencing.updateParticipants(callId, participants).then(call => process.resolve(call)).catch(err => {
                   callProcess.reject("Failed to update call participants: " + webConferencing.errorText(err));
                 });
               } else {
@@ -367,9 +366,6 @@
                 callProcess.reject("Failed to get call info: error reading call information from the server");
               }
             });
-          } else {
-            callProcess.reject("The Call App is not active");
-          }
         }).catch(err => {
           callProcess.reject("The Call App is temporary unavailable (" + webConferencing.errorText(err) + ")");
         });
@@ -391,7 +387,7 @@
       };
 
       /**
-       * Build a Call button and call invoked by it. 
+       * Build a Call button and call invoked by it.
        * Web Conferencing core provides a context object
        * where following information can be found: - currentUser - username of
        * an user that will run the call - userId - if found, it's 1:1 call
@@ -410,7 +406,7 @@
        * general it is a serialized to JSON Java class, extended from
        * IdentityInfo - consult related classes for full set of available bean
        * fields.
-       * 
+       *
        * This method returns a promise. When it resolved (done) it should
        * offer a Vue object of a button(s) container. When rejected
        * (failed), it returns an error description text (it may be shown
@@ -471,7 +467,7 @@
         // core to add a button to a required places
         return button.promise();
       };
-      
+
       /**
        * Returns invite link.
        */
